@@ -35,7 +35,7 @@ export default class GamePlay extends Phaser.Scene {
       livello: "1",
       conversation : 
       [
-        {nome:"Rackete",dice:"Ehi ciao Amelia !"},
+        {nome:"Rackete",dice:"Ehi ciao Amelia!!!"},
         {nome:"Amelia",dice:"Ciao Rackete"},
         {nome:"Rackete",dice:"Amelia ti devo aggiornare"},
         {nome:"Rackete",dice:"Adesso faccio parte della Sea Watch"},
