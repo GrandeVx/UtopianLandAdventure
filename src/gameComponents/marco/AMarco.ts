@@ -53,11 +53,38 @@ export default function AnimationCreator(scene: any) {
     _animation = {
       key: "marco-running-front",
       frames: scene.anims.generateFrameNumbers(scene._config.key+"_run", {
-        frames: [18,19,20,21,22,23]
+        frames: [6,7,8,9,10,11]
       }),
       frameRate: 10,
       yoyo: false,
       repeat: -1
+      };
+      //la inizializziamo
+      scene.anims.create(_animation);
+
+
+
+    _animation = {
+      key: "marco-running-back",
+      frames: scene.anims.generateFrameNumbers(scene._config.key+"_run", {
+          frames: [18,19,20,21,22,23]
+      }),
+      frameRate: 10,
+      yoyo: false,
+      repeat: -1
+      };
+      //la inizializziamo
+      scene.anims.create(_animation);
+
+
+      _animation = {
+        key: "marco-running-right",
+        frames: scene.anims.generateFrameNumbers(scene._config.key+"_run", {
+          frames: [0,1,2,3,4,5]
+        }),
+        frameRate: 10,
+        yoyo: false,
+        repeat: -1
       };
       //la inizializziamo
       scene.anims.create(_animation);

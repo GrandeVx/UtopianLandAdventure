@@ -68,7 +68,7 @@ export let GameData: any = {
     },
 
     {
-      name: " marco_run",
+      name: "marco_run",
       path: "assets/images/marco_run.png",
       width: 16,
       height: 32,

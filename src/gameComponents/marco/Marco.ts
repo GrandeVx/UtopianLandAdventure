@@ -117,7 +117,6 @@ export default class Marco extends Phaser.GameObjects.Sprite implements IMarco {
                 }
                 // -- Animazioni --
     
-            console.log("Marco: Movimento");
 
             setTimeout(() => {
                 this._body.acceleration.y = 0;  
@@ -131,7 +130,7 @@ export default class Marco extends Phaser.GameObjects.Sprite implements IMarco {
     
                 this._body.velocity.y = 0;
                 this._body.velocity.x = 0;
-                this._lastdirection = "right";
+                this._lastdirection = "front";
     
             // -- Animazioni --
             for (const t of this._animState.transitions()) {
