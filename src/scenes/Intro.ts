@@ -63,26 +63,6 @@ export default class Intro extends Phaser.Scene {
          this._play.setTint(0xff8200);
       });
 
-      this._credits = this.add.image(this.game.canvas.width / 2,500 ,"credits")
-      .setAlpha(1)
-      .setScale(0.25)
-      .setOrigin(0.5)
-      .setInteractive()
-      .setDepth(100)
-      
-      .on("pointerup", () => {
-        this._play.removeInteractive();
-       //
-        this.openCrediti();
-      })
-      .on("pointerover", () => {
-         this._play.setTint(0xff0000);
-      })
-      .on("pointerout", () => {
-          this._play.setTint(0xff8200);
-      });
-
-
       // start music
       this.sound.play("lobby", {
         volume: 0.5,
@@ -107,11 +87,6 @@ export default class Intro extends Phaser.Scene {
     this.scene.start("Message");
     this.scene.bringToTop("Message");
    // if (this.sys.game.device.input.touch) {}
-  }
-
-  openCrediti(){
-    this.scene.stop("Intro");
-    this.scene.start("Crediti");
   }
 
 }

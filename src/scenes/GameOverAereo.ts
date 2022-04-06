@@ -7,7 +7,7 @@ export default class GameOver extends Phaser.Scene {
 
   constructor() {
     super({
-      key: "GameOver",
+      key: "GameOverAereo",
     });
   }
 
@@ -28,7 +28,7 @@ export default class GameOver extends Phaser.Scene {
     
     
     
-     this._restart = this.add
+    this._restart = this.add
       .bitmapText(620, 500, "arcade", "RIGIOCA")
       .setAlpha(1)
       .setOrigin(0.5)
@@ -53,7 +53,7 @@ export default class GameOver extends Phaser.Scene {
 
    intro() {
   
-      this.scene.stop("GameOver");
+      this.scene.stop("GameOverAereo");
       this.scene.stop("Hud");
       this.scene.start("Intro");
       
@@ -61,9 +61,9 @@ export default class GameOver extends Phaser.Scene {
 
    restartGame() {
   
-      this.scene.stop("GameOver");
-      this.scene.start("LivelloMarino");
-      this.scene.bringToTop("LivelloMarino");
+      this.scene.stop("GameOverAereo");
+      this.scene.start("LivelloAereo");
+      this.scene.bringToTop("LivelloAereo");
       this.scene.start("Hud");
       this.scene.bringToTop("Hud");
       this.scene.bringToTop("TimerBar");

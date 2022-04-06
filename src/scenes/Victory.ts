@@ -13,7 +13,7 @@ export default class Victory extends Phaser.Scene {
 
   create() {
   
-    this._bg = this.add.tileSprite(this.game.canvas.width / 2, this.game.canvas.height / 2 + 50 , 1600, 1896, "bg-victory").setOrigin(0.5).setScale(1.2);
+    this._bg = this.add.tileSprite(this.game.canvas.width / 2, this.game.canvas.height / 2 , 1500, 1896, "bg-victory").setOrigin(0.5).setScale(1.2);
 
     this._Victory = this.add.image(this.game.canvas.width / 2, 50,"lcomplete").setAlpha(0).setScale(0.5);
     this.add.tween({
@@ -43,19 +43,23 @@ export default class Victory extends Phaser.Scene {
       .on("pointerout", () => {
          this._continue.setTint(0xff8200);
       });
+
+      this.scene.stop("TimerBar");
+      this.scene.stop("ReputationBar");
   }
 
    intro() {
   
-      this.scene.stop("GameOver");
+      this.scene.stop("Victory");
       this.scene.start("Intro");
       
    }
 
    restartGame() {
   
-      this.scene.stop("GameOver");
-      this.scene.start("GamePlay");
+      this.scene.stop("Victory");
+      this.scene.start("GamePlay"); 
+      this.scene.stop("TimerBar");
       this.scene.bringToTop("GamePlay");
       this.scene.start("Hud");
       this.scene.bringToTop("Hud");

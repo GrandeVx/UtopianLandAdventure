@@ -308,9 +308,9 @@ export default class LivelloAereo extends Phaser.Scene {
     if ( this._level === 3)
     this._treeGroup.children.each(function (tree) {
       if(tree.body.position.y > 600) {
-        console.log("Vittorio");
+        console.log("Vittori");
         //@ts-ignore
-        this.scene.start("Gameover");
+        this.scene.start("GameOverAereo");
       }
     }, this);
   }

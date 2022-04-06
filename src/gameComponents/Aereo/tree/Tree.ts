@@ -54,6 +54,9 @@ export default class Tree extends Phaser.GameObjects.Sprite implements ITree {
       yoyo: false,
       repeat: -1
     };
+
+
+    
     this.anims.create(_animation);
 
     this.anims.play("tree-burning");
