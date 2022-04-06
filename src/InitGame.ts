@@ -4,6 +4,7 @@ import Preloader from "./scenes/Preloader";
 import Intro from "./scenes/Intro";
 import Hud from "./scenes/Hud";
 import GameOver from "./scenes/GameOver";
+import GameOverAereo from "./scenes/GameOverAereo";
 import GamePlay from "./scenes/GamePlay";
 import LivelloAereo from "./scenes/livelli/LivelloAereo";
 import Message from "./scenes/Message";
@@ -44,6 +45,7 @@ window.addEventListener("load", () => {
       LivelloAereo,
       BatteryBar,
       Victory,
+      GameOverAereo,
       Crediti
     ],
 
