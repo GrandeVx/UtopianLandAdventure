@@ -33,7 +33,7 @@ export default class Hud extends Phaser.Scene {
     this.registry.set("score", this._score);
 
     this._scoreText = this.add
-      .bitmapText(20, 20, "arcade", "0")
+      .bitmapText(20, 20, "arcade")
       .setFontSize(30)
       .setTint(0xffffff)
       .setOrigin(0);
@@ -47,7 +47,7 @@ export default class Hud extends Phaser.Scene {
 
   private updateScore(parameters: Array<any>): void {
     this._score += parameters[0];
-    this._scoreText.setText(this._score + "");
+    this._scoreText.setText(this._score + "0");
     this.registry.set("score", this._score);
   
   }
@@ -57,6 +57,7 @@ export default class Hud extends Phaser.Scene {
       this.scene.stop("Hud");
       this.scene.stop("GamePlay");
       this.scene.start("GameOver");
+      this.scene.start("GameOverAereo");
      
   }
 }

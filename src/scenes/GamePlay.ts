@@ -145,7 +145,7 @@ export default class GamePlay extends Phaser.Scene {
 
     this._car.setAlpha(1).setDepth(101);
 
-    this._player.setAlpha(1).setDepth(101);
+    this._player.setAlpha(1).setDepth(104);
     this._adam.setAlpha(1).setDepth(101);
     //this._marco.setAlpha(1).setDepth(101);
     this._spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
@@ -192,7 +192,7 @@ export default class GamePlay extends Phaser.Scene {
     .setDepth(100).setAlpha(1)
 
     this.layer2 = this.map.createLayer("Palazzi",this.tileset,0,0)
-    .setDepth(102).setAlpha(1)
+    .setDepth(105).setAlpha(1)
 
     this.layer3 = this.map.createLayer("Piante",this.tileset,0,0)
     .setDepth(103).setAlpha(1)
