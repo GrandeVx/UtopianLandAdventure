@@ -147,7 +147,7 @@ export default class GamePlay extends Phaser.Scene {
 
     this._player.setAlpha(1).setDepth(101);
     this._adam.setAlpha(1).setDepth(101);
-    this._marco.setAlpha(1).setDepth(101);
+    //this._marco.setAlpha(1).setDepth(101);
     this._spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); 
 
     this.createMap();
