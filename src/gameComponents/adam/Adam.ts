@@ -91,7 +91,7 @@ export default class Adam extends Phaser.GameObjects.Sprite implements IAdam {
         this._body.offset.y = 10; // serve per patchare il bug della dimensione (Rendere l'area di contatto minore)
     }
 
-    public movit(chat: Array<{nome:String,dice:String}>,player:Hero) : void {
+    public movit(chat: Array<{nome:String,dice:String}>,player:Hero,done?:boolean) : void {
 
         if (!this._animationDone) 
         {
@@ -142,7 +142,12 @@ export default class Adam extends Phaser.GameObjects.Sprite implements IAdam {
                     }
                 }
                 // -- Animazioni --
-            this._scene.events.emit("conversazione",chat,"LivelloMarino");
+
+            if (done) {
+                this._scene.events.emit("conversazione",chat,"");
+            } else {
+                this._scene.events.emit("conversazione",chat,"LivelloMarino");
+            }
             }
             
 
