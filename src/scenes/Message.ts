@@ -37,24 +37,28 @@ export default class Message extends Phaser.Scene {
 
 
 
-    this._rectangle = this.add.rectangle(400,470, 500, 100, 0xA57548);
+    this._rectangle = this.add.rectangle(300,400, 700, 150, 0xA57548);
     this._rectangle.setOrigin(0,0);
 
     this._scoreText = this.add
-      .bitmapText(410, 480, "arcade", "Will Smith")
+      .bitmapText(310, 410, "arcade", "Will Smith")
       .setFontSize(15)
       .setTint(0xffffff)
       .setOrigin(0);
 
+
+
+
+
     this._messText = this.add
-      .bitmapText(410, 510, "arcade", "")
-      .setFontSize(13)
+      .bitmapText(310, 440, "arcade", "")
+      .setFontSize(11)
       .setTint(0xffffff)
       .setOrigin(0);
 
 
     this._yesButton = this.add
-      .bitmapText(850, 495, "arcade", "Si")
+      .bitmapText(950, 475, "arcade", "Si")
       .setFontSize(15)
       .setTint(0xffffff)
       .setOrigin(0)
@@ -75,7 +79,7 @@ export default class Message extends Phaser.Scene {
 
 
     this._noButton = this.add
-      .bitmapText(850, 530, "arcade", "No")
+      .bitmapText(950, 510, "arcade", "No")
       .setFontSize(15)
       .setTint(0xffffff)
       .setOrigin(0)
@@ -114,6 +118,9 @@ export default class Message extends Phaser.Scene {
         this._counter++;
 
         if (this._counter < this._testi.length) {
+
+
+
           this._scoreText.setText(String(this._testi[this._counter].nome));
           this._messText.setText(String(this._testi[this._counter].dice));
         

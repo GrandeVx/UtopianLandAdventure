@@ -33,18 +33,26 @@ export default class GamePlay extends Phaser.Scene {
     event:{
       who: "adam",
       livello: "1",
-      conversation : 
+      conversation : [
       [
-        {nome:"Rackete",dice:"Ehi ciao Amelia!!!"},
-        {nome:"Amelia",dice:"Ciao Rackete"},
-        {nome:"Rackete",dice:"Amelia ti devo aggiornare"},
-        {nome:"Rackete",dice:"Adesso faccio parte della Sea Watch"},
-        {nome:"Rackete",dice:"Per salvaguardare l ambiente marino"},
-        {nome:"Amelia",dice:"WOW sono felicissima per te!"},
-        {nome:"Amelia",dice:"Anche io vorrei aiutare l ambiente!"},
-        {nome:"Rachete",dice:"Stavo proprio cercando un aiutante!"},
-        {nome:"Rackete",dice:"Noi puliamo i fondali oceanici"},
-        {nome:"Rachete",dice:"Vorresti aiutare la Sea Watch ?"},
+        {nome:"Rackete", dice:"Ciao Amelia! Sono felice di averti qui con me."},
+        {nome:"Amelia", dice:"Ciao Rackete, anche io sono felice di essere qui con te."},
+        {nome:"Rackete", dice:"Sapevi che una delle cose più importanti da fare per \n\nsalvaguardare l'ambiente marino è proteggere l'acqua \n\ne promuoverne il riutilizzo?"},
+        {nome:"Amelia", dice:"No, non lo sapevo. Come possiamo fare \n\nla differenza nella vita quotidiana?"},
+        {nome:"Rackete", dice:"Ci sono molte cose che possiamo fare, \n\ncome ridurre l'uso di plastica monouso, raccogliere la plastica\n\ne riutilizzare l'acqua per mansioni di pulizia\n\nnelle scuole per esempio!"},
+        {nome:"Amelia", dice:"Cosa possiamo fare per promuovere l'uso \n\nsostenibile dell'acqua a livello più ampio?"},
+        {nome:"Rackete", dice:"Ci sono molte organizzazioni e progetti che lavorano per\n\nsensibilizzare le persone sull'importanza della salvaguardia\n\ndell'ambiente marino e dell'acqua.\n\nPotremmo anche organizzare eventi e attività educative\n\nnella nostra comunità."},
+        {nome:"Amelia", dice:"Mi piace l'idea. Ma come possiamo fare una differenza concreta?"},
+        {nome:"Rackete", dice:"Potremmo organizzare un'escursione in barca per esplorare\n\n i meravigliosi paesaggi marini e, nel contempo, \n\nfare un'azione di pulizia per mantenere l'acqua al sicuro.\n\nChe ne dici?"},
+        {nome:"Amelia", dice:"Sì, mi piace molto l'idea! Sarebbe fantastico poter fare la\n\ndifferenza e godere della bellezza\n\ndell'ambiente marino."},
+        {nome:"Rackete", dice:"Esattamente! Cominciamo a pianificare e coinvolgere\n\naltre persone ella nostra missione\n\nper salvaguardare\n\n'ambiente marino e l'acqua."}
+    ],
+    [
+      {name:"Rackete", dice:"Grande lavoro, Amelia!\n\nSiamo riuscite a salvaguardare una grande quantità di acqua\n\ndurante la nostra ultima missione."},
+      {name:"Amelia", dice:"Sì, è stato fantastico vedere quanti hanno partecipato\n\ne si sono uniti alla nostra causa per proteggere\n\nl'ambiente marino e l'acqua."},
+      {name:"Rackete", dice:"Assolutamente!\n\nE sappi che l'acqua che abbiamo salvato durante\n\nla nostra missione sarà utilizzata per pulire le scuole\n\ne per altre mansioni sostenibili\n\nnella nostra comunità."},
+      {name:"Amelia", dice:"Sono felice di sapere che il nostro lavoro sta facendo\n\nuna vera differenza.\n\nContinuerò a fare la mia parte per proteggere\n\nl'ambiente e l'acqua in futuro."}
+    ]
     ]
     }
     },
@@ -71,6 +79,9 @@ export default class GamePlay extends Phaser.Scene {
   private layer4: Phaser.Tilemaps.TilemapLayer;
   private event_point: Phaser.Tilemaps.TilemapLayer;
   private collision: Phaser.Tilemaps.TilemapLayer;
+
+  private _lvljustfinished: boolean = false;
+  private _lvlplaying : String = "";
 
 
   private _message: Message;
@@ -125,10 +136,12 @@ export default class GamePlay extends Phaser.Scene {
       1632, key: "adam"
     });
 
+    /*
     this._marco = new Marco({
       scene: this, x: 1236.7444444444475 , y:
       2140.000000000002, key: "marco"
     });
+    */
 
     this._car.setAlpha(1).setDepth(101);
 
@@ -148,10 +161,22 @@ export default class GamePlay extends Phaser.Scene {
   }
 
   finishchatting(lvl:String) : void {
+
+    if (lvl == "LivelloMarino") {
+      this._lvljustfinished = true;
+      this._lvlplaying = "LivelloMarino";
+    }
+
     this._player._bodyBlock = false;
-    this.scene.start(String(lvl));
+
+    if (lvl != "") {
+      this.scene.start(String(lvl));
+    }
+
+
   }
 
+  
        
   createMap() : void {
 
@@ -198,6 +223,11 @@ export default class GamePlay extends Phaser.Scene {
   update(time: number, delta: number) {
 
 
+    if (this._lvljustfinished) {
+      this._lvljustfinished = false;
+      this._adam.movit(this._events_cordinate[0].event.conversation[1],this._player,true);
+    }
+
     this._events_cordinate.forEach(element => {
       if ((this.float2int(this._player.x) - element.x < 30) && (this.float2int(this._player.y) - element.y > 0 && this.float2int(this._player.y) - element.y < 20)) {
         {
@@ -208,7 +238,7 @@ export default class GamePlay extends Phaser.Scene {
               this._last_cordinate.y = this.float2int(this._player.y);
               if (!this._events_done.adam ){
                 this._events_done.adam = true;
-                this._adam.movit(element.event.conversation,this._player);
+                this._adam.movit(element.event.conversation[0],this._player);
               }
               break;
 
